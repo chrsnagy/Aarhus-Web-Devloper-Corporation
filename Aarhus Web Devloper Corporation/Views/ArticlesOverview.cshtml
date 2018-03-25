@@ -1,5 +1,19 @@
 ﻿@inherits Umbraco.Web.Mvc.UmbracoTemplatePage<ContentModels.ArticlesOverview>
 @using ContentModels = Umbraco.Web.PublishedContentModels;
 @{
-	Layout = null;
+	Layout = "Master.cshtml";
 }
+<h1>TESTEEEST</h1>
+@{
+	var selection = Model.Content.Site().FirstChild("articlesOverview").Children("articleItem")
+						.Where(x => x.IsVisible())
+						.OrderBy("UpdateDate desc");
+}
+<ul>
+	@foreach(var item in selection){
+		<li>
+			<a href="@item.Url">@item.Name</a>
+		</li>
+	}
+</ul>
+
