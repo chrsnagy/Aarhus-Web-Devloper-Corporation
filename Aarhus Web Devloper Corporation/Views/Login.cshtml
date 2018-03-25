@@ -4,4 +4,12 @@
 }
 
 @* the fun starts here *@
-
+<p>Member login page</p>
+    @if (!Members.GetCurrentLoginStatus().IsLoggedIn) 
+    {
+        @Html.Partial("Login")
+    }
+    else 
+    {
+        @Html.Partial("Logout")
+    }

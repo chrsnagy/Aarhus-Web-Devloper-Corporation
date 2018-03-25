@@ -1,0 +1,12 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{ var selection = CurrentPage.Site().Children().Where("DocumentTypeAlias==\"messageBoard\"").First().Children.Where("Visible");}
+    
+    @foreach (var item in selection)
+        {   <div class="row">
+            <div class="container">
+            <h1>Name:@item.NameMessage</h1>
+            <p> Message: @item.MessageContent</p>
+            </div>
+</div>        
+
+}
