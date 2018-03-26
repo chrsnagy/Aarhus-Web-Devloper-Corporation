@@ -1,0 +1,26 @@
+﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
+@{
+	var selection = Model.Content.Site().Children().Where(x => x.Name == "News").First().Children();
+
+}
+ <a href="/news"><h1 class="text-center">News</h1></a> 
+<ul>
+    	<div class="container">
+      <div class="row">
+	@foreach(var item in selection){
+	
+	
+        <div class="col-lg-4 col-md-4 col-mx-4">
+         	<a href="@item.Url">@item.GetPropertyValue("articleTitle")</a>
+         	<p>@item.GetPropertyValue("articleContent")</p>
+     
+        </div>
+     
+
+	}
+	 </div>
+    </div>
+</ul>
+
+
+

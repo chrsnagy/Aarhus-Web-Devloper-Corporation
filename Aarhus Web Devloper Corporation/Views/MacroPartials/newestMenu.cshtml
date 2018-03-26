@@ -1,13 +1,27 @@
 ﻿@inherits Umbraco.Web.Macros.PartialViewMacroPage
 @{
 	var selection = Model.Content.Site().FirstChild("projectsOverview").Children()
-						.Where(x => x.IsVisible())
-						.OrderBy("CreateDate desc").Take(2);
+						.Where(x => x.IsVisible() )
+						.OrderBy("CreateDate desc");
 }
-<ul>
-	@foreach(var item in selection){
-		<li>
-			<a href="@item.Url">@item.Name</a>
-		</li>
+
+
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Projects
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+          <a class="dropdown-item" href="/our-projects/">All Projects</a>
+          	@foreach(var item in selection){
+		if(@item.GetPropertyValue("projectStatus").ToString() == "42"){
+			<a class="dropdown-item" href="@item.Url">@item.Name</a>
+			
+			}
+	
 	}
-</ul>
+       
+        </div>
+      </li>
+      
+
+      

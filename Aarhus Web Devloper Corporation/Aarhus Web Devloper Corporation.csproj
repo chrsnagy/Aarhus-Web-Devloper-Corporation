@@ -410,6 +410,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\ContactFormSurface\" />
+    <Folder Include="Views\MacroPartials\" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

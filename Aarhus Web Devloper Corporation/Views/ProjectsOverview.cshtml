@@ -5,13 +5,21 @@
 }
 @{
 	var selection = Model.Content.Site().FirstChild("projectsOverview").Children()
-						.Where(x => x.IsVisible());
+						.Where(x => x.IsVisible()).OrderBy("UpdateDate");
 }
+<br>
+<br>
+<br>
+
 <ul>
 	@foreach(var item in selection){
 		<li>
+		    <hr />
 			<a href="@item.Url">@item.Name</a>
+			<hr />
 		</li>
 	}
 </ul>
+
+
 

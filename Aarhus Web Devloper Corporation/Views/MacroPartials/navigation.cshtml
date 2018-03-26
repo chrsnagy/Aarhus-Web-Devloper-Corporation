@@ -8,39 +8,38 @@
 *@
 
 @{ var selection = CurrentPage.Site().Children(); }
-<nav class="navbar navbar-default">
-      <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-            <span class="sr-only">Toggle navigation</span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-            <span class="icon-bar"></span>
-          </button>
-          <a class="navbar-brand" href="/">Home</a>
-        </div>
-
-    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 
 
-@if (selection.Any())
-{
-<ul class="nav navbar-nav">
-
-        @foreach (var item in selection.Where("UmbracoNaviHide == false"))
-        {
-            <li class="@(item.IsAncestorOrSelf(CurrentPage)? "current" : null)">
-                <a href="@item.Url">@item.Name</a>
+ <div class="container">
+         <a class="navbar-brand" href="/">Home</a>
+        <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+          Menu
+          <i class="fa fa-bars"></i>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarResponsive">
+          <ul class="navbar-nav ml-auto">
+            <li class="nav-item">
+              <a class="nav-link" href="/">Home</a>
             </li>
-        }
-       @Umbraco.RenderMacro("mainMenu")
-    </ul>
-}
- 
- 
- 
- 
+            @if (selection.Any())
+            {
+                foreach (var item in selection.Where("UmbracoNaviHide == false"))
+                 {
+                     <li class="nav-item">
+                     <a  class="nav-link" href="@item.Url">@item.Name</a>
+                    </li>
+                 }
+            }
+             @Umbraco.RenderMacro("newestMenu")
+          </ul>
+        </div>
+      </div>
+
+
+
+
+
+
  
  
        
